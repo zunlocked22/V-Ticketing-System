@@ -23,7 +23,9 @@
                     <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="ticketList"></tbody>
+            <tbody id="ticketList">
+                <!-- Tickets will be displayed here dynamically -->
+            </tbody>
         </table>
     </div>
 
@@ -50,7 +52,7 @@
                         </tr>
                     `;
                 });
-                $('#ticketList').html(ticketsHTML);
+                $('#ticketList').html(ticketsHTML); // Insert tickets into the table body
             },
             error: function (err) {
                 console.log('Error fetching tickets', err);
