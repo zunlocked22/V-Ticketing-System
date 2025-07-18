@@ -20,14 +20,16 @@ router.post('/', async (req, res) => {
 });
 
 // Route to get all tickets
+// Fetch all tickets
 router.get('/', async (req, res) => {
   try {
-    const tickets = await Ticket.find();
-    res.status(200).json(tickets);
+    const tickets = await Ticket.find(); // Fetch all tickets from MongoDB
+    res.status(200).json(tickets); // Send the list of tickets as JSON response
   } catch (err) {
     res.status(500).json({ error: 'Failed to fetch tickets' });
   }
 });
+
 
 // Update ticket status
 router.put('/:id', async (req, res) => {
