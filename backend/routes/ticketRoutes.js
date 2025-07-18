@@ -29,4 +29,23 @@ router.get('/', async (req, res) => {
   }
 });
 
+// Update ticket status
+router.put('/:id', async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    const updatedTicket = await Ticket.findByIdAndUpdate(id, { status }, { new: true });
+
+    if (!updatedTicket) {
+      return res.status(404).json({ error: 'Ticket not found' });
+    }
+
+    res.status(200).json(updatedTicket);
+  } catch (err) {
+    res.status(500).json({ error: 'Failed to update ticket status' });
+  }
+});
+
+
 module.exports = router;
